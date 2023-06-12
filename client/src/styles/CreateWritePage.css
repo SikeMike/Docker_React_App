@@ -1,0 +1,42 @@
+.cwp-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.cwp-form {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.cwp-option {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.cwp-label {
+  margin-bottom: 5px;
+  width: 20%;
+  font-weight: bold;
+}
+
+.cwp-input {
+  width: 70%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.cwp-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cwp-button:hover {
+  background-color: #45a049;
+}

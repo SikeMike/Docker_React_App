@@ -1,0 +1,32 @@
+.nav-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0b214a;
+  color: #fff;
+  padding: 10px;
+}
+
+.nav-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.nav-title {
+  margin-left: 10px;
+}
+
+.nav-logout {
+  margin-left: auto;
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.nav-logout:hover {
+  background-color: #0056b3;
+}

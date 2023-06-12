@@ -1,0 +1,31 @@
+.write-question {
+  margin-bottom: 20px;
+}
+
+.write-question h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.write-question-input {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.write-question-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.write-question-button:hover {
+  background-color: #45a049;
+}
+
+.write-question-error {
+  color: red;
+  font-style: italic;
+}

@@ -1,0 +1,37 @@
+.quiz-page {
+  background-color: #f2f2f2;
+  min-height: 100vh;
+}
+
+.quiz-container {
+  padding: 20px;
+}
+
+.quiz-title {
+  text-align: left;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.quiz-result {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.answer-status {
+  margin-bottom: 10px;
+  color: darkorange;
+}
+
+.collection-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.collection-button:hover {
+  background-color: #45a049;
+}
