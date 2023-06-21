@@ -1,3 +1,4 @@
+let generator = import('../controllers/utils/generador.js');
 const User = require('../models/User');
 
 async function createUser(req, res) {
@@ -126,6 +127,18 @@ async function updateAnswer(req, res) {
   }
 };
 
+async function generateQuestion(req, res){
+  try {
+    const { category } = req.body;
+    let question = (await generator).default(category);
+
+    res.status(200).json({ success: true, message: 'Question created successfully', data: question });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ success: false, message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   createUser,
   storeQuestion,
@@ -133,4 +146,5 @@ module.exports = {
   login,
   deleteQuestion,
   updateAnswer,
+  generateQuestion,
 };

@@ -70,6 +70,15 @@ const CollectionPage = () => {
   const handleGenerateQuestion = () => {
     console.log('Calling question generator');
     // Implement question generation logic here
+    const category = document.getElementById("category").value;
+    axios.post(`http://localhost:5000/api/${userID}/generateQuestion`, { category })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle any errors
+    });
   };
 
   const handleCreateQuestion = () => {
