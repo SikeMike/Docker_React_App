@@ -58,17 +58,23 @@ async function getQuestions(req, res) {
 }
 
 async function storeQuestion(req, res) {
+  console.log("userController.js : starting storeQuestion");
   try {
     const { userId } = req.params;
     const { type, question, options, correctAnswer } = req.body;
+    console.log("userController.js : valor de type -> ", type);
+    console.log("userController.js : valor de question -> ", question);
+    console.log("userController.js : valor de options -> ", options);
+    console.log("userController.js : valor de correctAnswer -> ", correctAnswer);
     const user = await User.findById(userId);
-
+    console.log("userController.js : user encontrado -> ", user != null)
     if (!user) {
       return res.status(404).send({ message: 'User not found' });
     }
-
+    console.log("userController.js : empezando push")
     user.questions.push({ type, question, options, correctAnswer });
     await user.save();
+    console.log("userController.js : cambios realizados")
 
     res.status(201).send({ message: 'Question stored successfully' });
   } catch (error) {
@@ -130,9 +136,12 @@ async function updateAnswer(req, res) {
 async function generateQuestion(req, res){
   try {
     const { category } = req.body;
-    let question = (await generator).default(category);
+    console.log("userController.js : antes de llamar a generator")
+    let question = await (await generator).default(category);
+    console.log("userController.js : despues de llamar a generator")
+    console.log("userController.js : question tendría que tener valor ->", question != null)
 
-    res.status(200).json({ success: true, message: 'Question created successfully', data: question });
+    res.status(200).json({ success: true, message: 'Question created successfully', payload: question });
   } catch (error) {
     console.error(error);
     res.status(500).send({ success: false, message: 'Internal server error' });

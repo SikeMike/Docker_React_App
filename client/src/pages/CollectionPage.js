@@ -67,18 +67,39 @@ const CollectionPage = () => {
     }
   };
 
-  const handleGenerateQuestion = () => {
+  const handleGenerateQuestion = async () => {
     console.log('Calling question generator');
-    // Implement question generation logic here
+
     const category = document.getElementById("category").value;
-    axios.post(`http://localhost:5000/api/${userID}/generateQuestion`, { category })
-    .then(response => {
-      const data = response.data;
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle any errors
-    });
+    if (category !== '') {
+      console.log("CollectionPage.js : valor de category ->", category);
+      try {
+        // PRIMERO GENERAR PREGUNTA
+        const response1 = await axios.post(`http://localhost:5000/api/${userID}/generateQuestion`, {
+          category: category
+        });
+        console.log("ColllectionPage.js : pregunta generada, response1 tiene valor -> ", response1 != null);
+        console.log("Valor de response1.data.payload -> ", response1.data.payload);
+        const { question : titulo, options : opciones, answer: cAnswer } = response1.data.payload;
+        console.log("CollectionPage.js : valor de titulo ->", titulo);
+        console.log("CollectionPage.js : valor de opciones ->", opciones);
+        console.log("CollectionPage.js : valor de cAnswer ->", cAnswer);
+        
+        // DESPUES ALMACENAR PREGUNTA
+        const response2 = await axios.post(`http://localhost:5000/api/${userID}/question`, {
+          type: category,
+          question: titulo,
+          options: opciones,
+          correctAnswer: cAnswer
+        });
+        console.log("CollectionPage.js : pregunta almacenada, respuesta de response2 -> ", response2)
+        
+        fetchQuestions(); // Refresh again
+
+      } catch(error) {
+        console.error(error);
+      }
+    }
   };
 
   const handleCreateQuestion = () => {
