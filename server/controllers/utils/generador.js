@@ -64,7 +64,6 @@ class QuestionGenerator {
 
     var jsonObject = await this.extractJsonObject(res.text);
 
-    console.log(jsonObject);
     return jsonObject;
   }
 
@@ -95,10 +94,7 @@ class QuestionGenerator {
 }
 
 export default async function main(qType){
-  console.log("generador.js : ejecutando default")
   let g = new QuestionGenerator;
-  console.log("generador.js : QuestionGenerator class creada -->", g != null)
   let q = await g.getQuestion(qType);
-  console.log("generador.js : getQuestion ejecutado -->", q != null)
   return q;
 }
