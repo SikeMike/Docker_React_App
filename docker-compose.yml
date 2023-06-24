@@ -1,0 +1,29 @@
+version: '3'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    networks:
+      - mern-stack-network
+    depends_on:
+      - mongo
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - mern-stack-network
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    networks:
+      - mern-stack-network
+networks:
+  mern-stack-network:
+    driver: bridge

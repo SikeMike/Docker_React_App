@@ -5,7 +5,7 @@ mongoose.connection.on('error', (error) => console.error('Db connection error:',
 
 async function connectDb() {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/mydb',
+    await mongoose.connect('mongodb://mongo:27017/mydb',
     { useNewUrlParser: true,
       useUnifiedTopology: true });
     console.log('Connected to MongoDB!');
